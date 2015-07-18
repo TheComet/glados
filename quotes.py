@@ -11,9 +11,6 @@ def setup(willie):
   global quotes_data_path
   quotes_data_path = willie.config.quotes.quotes_data_path
 
-  if not quotes_data_path.endswith('/'):
-    quotes_data_path = quotes_data_path + '/'
-
 def check_nickname_valid(nickname, bot):
   if nickname is None:
     bot.reply("Must pass a nickname as an argument")
@@ -26,13 +23,13 @@ def check_nickname_valid(nickname, bot):
   return True
 
 def quotes_file_name(nickname):
-  return quotes_data_path + nickname + '.txt'
+  return os.path.join(quotes_data_path, nickname) + '.txt'
 
 @willie.module.rule("^(.*)$")
 def record(bot, trigger):
   quotes_file = codecs.open(quotes_file_name(trigger.nick), 'a', encoding='utf-8')
   quotes_file.write(trigger.group(1) + "\n")
-  quotes_file.close
+  quotes_file.close()
 
 @willie.module.commands('quote')
 def quote(bot, trigger):
@@ -43,6 +40,7 @@ def quote(bot, trigger):
 
   quotes_file = codecs.open(quotes_file_name(nickname), 'r', encoding='utf-8')
   lines = quotes_file.readlines()
+  quotes_file.close()
 
   lines = [x for x in lines if len(x) >= 20]
 
@@ -59,8 +57,15 @@ def quotestats(bot, trigger):
 
   quotes_file = codecs.open(quotes_file_name(nickname), 'r', encoding='utf-8')
   lines = quotes_file.readlines()
+  quotes_file.close()
 
-  average_length = float(sum([len(x) for x in lines])) / float(len(lines))
+  number_of_quotes = len(lines)
+  average_quote_length = float(sum([len(quote) for quote in lines])) / float(number_of_quotes)
 
-  bot.say("I know about %i quotes from %s" % (len(lines), nickname))
-  bot.say("The average quote length is %.2f characters" % (average_length))
+  words = len(' '.join(lines).split(' '))
+  number_of_words = len(words)
+  average_word_length = float(sum([len(quote) for quote in words])) / float(number_of_words)
+
+  bot.say("I know about %i quotes from %s" % (number_of_quotes, nickname))
+  bot.say("The average quote length is %.2f characters" % (average_quote_length))
+  bot.say("%s spoke %i words with an average length of %.2f" % (nickname, number_of_words, average_word_length))
