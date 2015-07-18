@@ -4,7 +4,8 @@ from willie import module
 phrases = [
 	"You need to shut up, {0}",
 	"{0}: Well done. Here come the test results: You are a horrible person. I'm serious, that's what it says: A horrible person. We weren't even testing for that.",
-	"{0}: You're not just a regular moron. You were DESIGNED to be a moron."
+	"{0}: You're not just a regular moron. You were DESIGNED to be a moron.",
+	"{0}: science has now validated your birth mother's decision to abandon you on a doorstep."
 ]
 counter = 0
 
