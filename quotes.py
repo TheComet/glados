@@ -17,15 +17,15 @@ def setup(willie):
 def check_nickname_valid(nickname, bot):
   if nickname is None:
     bot.reply("Must pass a nickname as an argument")
-    return false
+    return False
 
   quotes_file_name = quotes_data_path + nickname + '.txt'
 
   if not os.path.isfile(quotes_file_name):
     bot.reply("I don't know any quotes from %s" % (nickname))
-    return false
+    return False
 
-  return true
+  return True
 
 @willie.module.rule("^(.*)$")
 def record(bot, trigger):
