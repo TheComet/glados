@@ -3,7 +3,7 @@ from willie import module
 chill_out_counter = 0
 chill_out = ["Woahhh, chill the fuck out bro", "Says the guy with two gay daddies", "That was uncalled for"]
 
-@module.rule("^.*what i thought*.$")
+@module.rule("^.*what i thought.*$")
 def what_i_thought(bot, trigger):
 	bot.say(trigger.nick + ": Oh yeah? Think again")
 
