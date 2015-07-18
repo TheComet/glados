@@ -10,10 +10,17 @@ phrases = [
 counter = 0
 
 @module.rule("^.*(shut)(up)(glados).*$")
-@module.rule("^.*(fuck)(you)(glados).*$")
 def shut_up(bot, trigger):
+	respond(bot, trigger)
+
+@module.rule("^.*(fuck)(you)(glados).*$")
+def fuck_you(bot, trigger).
+	respond(bot, trigger)
+
+def respond(bot, trigger):
 	global phrases
 	global counter
 	bot.say(phrases[counter].format(trigger.nick))
 	counter = (counter + 1) % len(phrases)
+
 
