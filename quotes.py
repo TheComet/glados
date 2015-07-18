@@ -62,4 +62,4 @@ def quotestats(bot, trigger):
   average_length = float(sum([len(x) for x in lines])) / float(len(lines))
 
   bot.say("I know about %i quotes from %s" % (len(lines), nickname))
-  bot.say("The average quote length is %f" % (average_length))
+  bot.say("The average quote length is %.2f" % (average_length))
