@@ -3,7 +3,10 @@ from willie import module
 chill_out_counter = 0
 chill_out = ["Woahhh, chill the fuck out bro", "Says the guy with two gay daddies", "That was uncalled for"]
 
-@module.rule(".*what i thought.*")
+diety_counter = 0
+diety_dammit = ["Allah dammit!", "Buddha dammit!", "Vishnu dammit!", "Shiva dammit!"]
+
+@module.rule("^.*(what i thought).*$")
 def what_i_thought(bot, trigger):
 	bot.say(trigger.nick + ": Oh yeah? Think again")
 
@@ -20,4 +23,7 @@ def fucking_queer_defense(bot, trigger):
 
 @module.rule("^(((?=.*goddammit).*)|((?=.*goddamnit).*)|((?=.*goddangit).*)).*$")
 def allah_dammit(bot, trigger):
-        bot.say(trigger.nick + ": Allah dammit!")
+        global diety_counter
+        global diety_dammit
+        bot.say(trigger.nick + ": " + diety_dammit[diety_counter])
+        diety_counter = (diety_counter + 1) % len(diety_dammit)
