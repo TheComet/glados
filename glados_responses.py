@@ -9,11 +9,11 @@ phrases = [
 ]
 counter = 0
 
-@module.rule("^.*(shut)(up)(glados).*$")
+@module.rule("^.*(?=.*shut)(?=.*up)(?=.*glados).*$")
 def shut_up(bot, trigger):
 	respond(bot, trigger)
 
-@module.rule("^.*(fuck)(you)(glados).*$")
+@module.rule("^.*(?=.*fuck)(?=.*you)(?=.*glados).*$")
 def fuck_you(bot, trigger).
 	respond(bot, trigger)
 
