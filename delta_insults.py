@@ -11,7 +11,7 @@ def what_i_thought(bot, trigger):
 def according_to_books(bot, trigger):
 	bot.say(trigger.nick + ": Just because you read lots of books doesn't mean mommy loves you")
 
-@module.rule("^((?=.*fucking)(?=.*queer).*|(?=.*FUCKING).*)$")
+@module.rule("^(?=.*fucking)(?=.*queer).*$")
 def fucking_queer_defense(bot, trigger):
 	global chill_out
 	global chill_out_counter
