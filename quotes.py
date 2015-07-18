@@ -19,17 +19,18 @@ def check_nickname_valid(nickname, bot):
     bot.reply("Must pass a nickname as an argument")
     return False
 
-  quotes_file_name = quotes_data_path + nickname + '.txt'
-
-  if not os.path.isfile(quotes_file_name):
+  if not os.path.isfile(quotes_file_name(nickname)):
     bot.reply("I don't know any quotes from %s" % (nickname))
     return False
 
   return True
 
+def quotes_file_name(nickname):
+  return quotes_data_path + nickname + '.txt'
+
 @willie.module.rule("^(.*)$")
 def record(bot, trigger):
-  quotes_file = codecs.open(quotes_data_path + trigger.nick + '.txt', 'a', encoding='utf-8')
+  quotes_file = codecs.open(quotes_file_name(trigger.nick), 'a', encoding='utf-8')
   quotes_file.write(trigger.group(1) + "\n")
   quotes_file.close
 
@@ -40,12 +41,25 @@ def quote(bot, trigger):
   if not check_nickname_valid(nickname, bot):
     return
 
-  quotes_file_name = quotes_data_path + nickname + '.txt'
-
-  quotes_file = codecs.open(quotes_file_name, 'r', encoding='utf-8')
+  quotes_file = codecs.open(quotes_file_name(nickname), 'r', encoding='utf-8')
   lines = quotes_file.readlines()
 
   lines = [x for x in lines if len(x) >= 20]
 
   line = random.choice(lines)
   bot.say("%s once said: \"%s\"" % (nickname, line))
+
+@willie.module.commands('quotestats')
+def quotestats(bot, trigger):
+  nickname = trigger.group(3)
+
+  if not check_nickname_valid(nickname, bot):
+    return
+
+  quotes_file = codecs.open(quotes_file_name(nickname), 'r', encoding='utf-8')
+  lines = quotes_file.readlines()
+
+  average_length = sum([len(x) for x in lines]) / len(lines)
+
+  bot.say("I know about %i quotes from %s" % (len(lines), nickname))
+  bot.say("The average quote length is %f" % (average_length))
