@@ -59,7 +59,7 @@ def quotestats(bot, trigger):
   quotes_file = codecs.open(quotes_file_name(nickname), 'r', encoding='utf-8')
   lines = quotes_file.readlines()
 
-  average_length = sum([len(x) for x in lines]) / len(lines)
+  average_length = float(sum([len(x) for x in lines])) / float(len(lines))
 
   bot.say("I know about %i quotes from %s" % (len(lines), nickname))
   bot.say("The average quote length is %f" % (average_length))
