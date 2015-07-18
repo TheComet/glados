@@ -68,4 +68,4 @@ def quotestats(bot, trigger):
 
   bot.say("I know about %i quotes from %s" % (number_of_quotes, nickname))
   bot.say("The average quote length is %.2f characters" % (average_quote_length))
-  bot.say("%s spoke %i words with an average length of %.2f" % (nickname, number_of_words, average_word_length))
+  bot.say("%s spoke %i words with an average length of %.2f characters" % (nickname, number_of_words, average_word_length))
