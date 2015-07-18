@@ -10,6 +10,10 @@ diety_dammit = ["Allah dammit!", "Buddha dammit!", "Vishnu dammit!", "Shiva damm
 def what_i_thought(bot, trigger):
 	bot.say(trigger.nick + ": Oh yeah? Think again")
 
+@module.rule("^.*(?=.*get)(?=.*book).*$")
+def getting_a_book(bot, trigger):
+	bot.say("Another book? That's some expensive toilet paper.")
+
 @module.rule("^(?=.*according)(?=.*book).*$")
 def according_to_books(bot, trigger):
 	bot.say(trigger.nick + ": Just because you read lots of books doesn't mean mommy loves you")
