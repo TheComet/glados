@@ -62,7 +62,7 @@ def quotestats(bot, trigger):
   number_of_quotes = len(lines)
   average_quote_length = float(sum([len(quote) for quote in lines])) / float(number_of_quotes)
 
-  words = len(' '.join(lines).split(' '))
+  words = ' '.join(lines).split(' ')
   number_of_words = len(words)
   average_word_length = float(sum([len(quote) for quote in words])) / float(number_of_words)
 
