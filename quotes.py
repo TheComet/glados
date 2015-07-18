@@ -47,7 +47,7 @@ def quote(bot, trigger):
   if len(lines) > 0:
     line = random.choice(lines)
     bot.say("%s once said: \"%s\"" % (nickname, line))
-  else
+  else:
     bot.say("%s hasn't delivered any quotes worth mentioning yet" % (nickname))
 
 @willie.module.commands('quotestats')
