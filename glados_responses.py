@@ -13,8 +13,8 @@ counter = 0
 def shut_up(bot, trigger):
 	respond(bot, trigger)
 
-@module.rule("^.*(?=.*fuck)(?=.*you)(?=.*glados).*$")
-def fuck_you(bot, trigger).
+@module.rule("^.*(?=.*fuck)(?=.*glados).*$")
+def fuck_you(bot, trigger):
 	respond(bot, trigger)
 
 def respond(bot, trigger):
