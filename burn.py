@@ -24,8 +24,8 @@ def setup(willie):
     
     burns_dict = dict()
     if os.path.isfile(burns_data_file):
-        for line in open(burns_data_file, "r"):
-            nick = str(line.split(": ")[0])
+        for line in codecs.open(burns_data_file, 'r', encoding='utf-8'):
+            nick = line.split(": ")[0]
             count = int(line.split(": ")[1])
             burns_dict[nick] = count
 
@@ -33,7 +33,7 @@ def shutdown(willie):
     global burns_dict
     global burns_data_file
 
-    with open(burns_data_file, "w") as f:
+    with codecs.open(burns_data_file, 'a', encoding='utf-8') as f:
         for nick, count in burns_dict.iteritems():
             f.write(nick + ": " + count + "\n")
 
@@ -57,8 +57,8 @@ def burn_user(bot, trigger):
         burns_dict[user_being_burned] = 0
     if not user_burning in burns_dict:
         burns_dict[user_burning] = 0
-    burns_dict[user_being_burned] += 1
+    burns_dict[user_burning] += 1
 
     bot.say(user_being_burned + ": " + burn)
-    bot.say(user_burning + ": " + burns_dict[user_burning])
-    bot.say(user_being_burned + ": " + burns_dict[user_being_burned])
+    bot.say(user_burning + ": " + str(burns_dict[user_burning]))
+    bot.say(user_being_burned + ": " + str(burns_dict[user_being_burned]))
