@@ -4,6 +4,6 @@ import commands
 
 @module.commands('fortune')
 def fortune(bot, trigger):
-	fortune = commands.getoutput('fortune')
+	fortune = commands.getoutput('/usr/games/fortune')
 	for line in fortune.rsplit("\n"):
 		bot.say(line)
