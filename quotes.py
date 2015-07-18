@@ -14,7 +14,7 @@ def setup(willie):
   if not quotes_data_path.endswith('/'):
     quotes_data_path = quotes_data_path + '/'
 
-@willie.module.rule("^(.{20,})$")
+@willie.module.rule("^(.*)$")
 def record(bot, trigger):
   quotes_file = codecs.open(quotes_data_path + trigger.nick + '.txt', 'a', encoding='utf-8')
   quotes_file.write(trigger.group(1) + "\n")
@@ -34,6 +34,8 @@ def quote(bot, trigger):
 
   quotes_file = codecs.open(quotes_file_name, 'r', encoding='utf-8')
   lines = quotes_file.readlines()
+
+  lines = [x for x in lines if len(x) >= 20]
 
   line = random.choice(lines)
   bot.say("%s once said: \"%s\"" % (nickname, line))
