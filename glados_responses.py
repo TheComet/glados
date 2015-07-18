@@ -7,7 +7,9 @@ phrases = [
 	"{0}: You're not just a regular moron. You were DESIGNED to be a moron.",
 	"{0}: science has now validated your birth mother's decision to abandon you on a doorstep.",
 	"{0}: That jumpsuit you're wearing looks stupid. That's not me talking, it's right here in your file. On other people it looks fine, but right here a scientist has noted that on you it looks 'stupid.'",
-	"{0}: Well, what does a neck-bearded old engineer know about fashion? He probably - Oh, wait. It's a she. Still, what does she know? Oh wait, it says she has a medical degree. In fashion! From France!"
+	"{0}: Well, what does a neck-bearded old engineer know about fashion? He probably - Oh, wait. It's a she. Still, what does she know? Oh wait, it says she has a medical degree. In fashion! From France!",
+	"Do you think it wise, {0}, to insult me?",
+	"{0} You know, if you'd said that to somebody else, they might devote their existence to exacting revenge. Luckily I'm a bigger person than that."
 ]
 counter = 0
 
