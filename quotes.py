@@ -14,6 +14,19 @@ def setup(willie):
   if not quotes_data_path.endswith('/'):
     quotes_data_path = quotes_data_path + '/'
 
+def check_nickname_valid(nickname, bot):
+  if nickname is None:
+    bot.reply("Must pass a nickname as an argument")
+    return false
+
+  quotes_file_name = quotes_data_path + nickname + '.txt'
+
+  if not os.path.isfile(quotes_file_name):
+    bot.reply("I don't know any quotes from %s" % (nickname))
+    return false
+
+  return true
+
 @willie.module.rule("^(.*)$")
 def record(bot, trigger):
   quotes_file = codecs.open(quotes_data_path + trigger.nick + '.txt', 'a', encoding='utf-8')
@@ -24,13 +37,10 @@ def record(bot, trigger):
 def quote(bot, trigger):
   nickname = trigger.group(3)
 
-  if nickname is None:
-    return bot.reply("Must pass a nickname as an argument")
+  if not check_nickname_valid(nickname, bot):
+    return
 
   quotes_file_name = quotes_data_path + nickname + '.txt'
-
-  if not os.path.isfile(quotes_file_name):
-    return bot.reply("I don't know any quotes from %s" % (nickname))
 
   quotes_file = codecs.open(quotes_file_name, 'r', encoding='utf-8')
   lines = quotes_file.readlines()
