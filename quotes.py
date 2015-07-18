@@ -46,8 +46,9 @@ def quote(bot, trigger):
 
   lines = [x for x in lines if len(x) >= 20]
 
-  line = random.choice(lines)
-  bot.say("%s once said: \"%s\"" % (nickname, line))
+  if len(lines) > 0:
+    line = random.choice(lines)
+    bot.say("%s once said: \"%s\"" % (nickname, line))
 
 @willie.module.commands('quotestats')
 def quotestats(bot, trigger):
@@ -62,4 +63,4 @@ def quotestats(bot, trigger):
   average_length = float(sum([len(x) for x in lines])) / float(len(lines))
 
   bot.say("I know about %i quotes from %s" % (len(lines), nickname))
-  bot.say("The average quote length is %.2f" % (average_length))
+  bot.say("The average quote length is %.2f characters" % (average_length))
