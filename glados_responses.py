@@ -21,6 +21,10 @@ def shut_up(bot, trigger):
 def fuck_you(bot, trigger):
 	respond(bot, trigger)
 
+@module.rule("^.*(?=.*glados)(?=.*cunt).*$")
+def you_cunt(bot, trigger):
+    respond(bot, trigger)
+
 def respond(bot, trigger):
 	global phrases
 	global counter
