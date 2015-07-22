@@ -27,4 +27,12 @@ def respond(bot, trigger):
 	bot.say(phrases[counter].format(trigger.nick))
 	counter = (counter + 1) % len(phrases)
 
+@module.rule("^.*(?=.*hmkay).*$")
+def hmkay(bot, trigger):
+    bot.say("HHHMMMMKAAAYYY. DRUGS ARE BAD HHMKAY")
 
+@module.rule("\^\^")
+def smiley(bot, trigger):
+    bot.say("^^;")
+    bot.say("^^")
+    bot.say("^^ ^^^ ^^^^^^^^ ^^ ^^^")
