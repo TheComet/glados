@@ -2,8 +2,19 @@ from willie import module
 from random import randint
 
 fart_counter = 0
-fart_sounds = ["toot","pbtpbtpbt", "paarp", "prrrbbbbt", "lets loose a land-locked foghorn", "lets go an ass flapper", "broke wind", "launched a butt bazooka",
-               "roared from the rear", "is insane in the methane", "gassed the room"]
+fart_sounds = [
+    "toot",
+    "pbtpbtpbt",
+    "paarp",
+    "prrrbbbbt",
+    "has a small explosion between his or her legs",
+    "lets loose a land-locked foghorn",
+    "lets go an ass flapper",
+    "broke wind",
+    "launched a butt bazooka",
+    "roared from the rear",
+    "is insane in the methane",
+    "gassed the room"]
 
 @module.commands("fart")
 def fart(bot, trigger):
