@@ -27,13 +27,12 @@ def quotes_file_name(nickname):
 
 @willie.module.rule("^(.*)$")
 def record(bot, trigger):
-  quotes_file = codecs.open(quotes_file_name(trigger.nick), 'a', encoding='utf-8')
-  quotes_file.write(trigger.group(1) + "\n")
-  quotes_file.close()
+  with codecs.open(quotes_file_name(trigger.nick.lower()), 'a', encoding='utf-8') as f:
+    f.write(trigger.group(1) + "\n")
 
 @willie.module.commands('quote')
 def quote(bot, trigger):
-  nickname = trigger.group(3)
+  nickname = trigger.group(3).lower()
 
   if not check_nickname_valid(nickname, bot):
     return
@@ -52,7 +51,7 @@ def quote(bot, trigger):
 
 @willie.module.commands('quotestats')
 def quotestats(bot, trigger):
-  nickname = trigger.group(3)
+  nickname = trigger.group(3).lower()
 
   if not check_nickname_valid(nickname, bot):
     return
