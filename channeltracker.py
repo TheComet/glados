@@ -28,9 +28,10 @@ def setup(willie):
 def list_channels(bot, trigger):
     global channels_dict
     bot.reply("Sending you a PM of all tracked channels")
+    bot.msg(trigger.nick, 'How to interpret this data: #channelname(times mentioned)')
     msg = list()
     for channel, mentions in sorted(channels_dict.items(), key=operator.itemgetter(1), reverse=True):
-        msg.append("#{0},{1}".format(channel, mentions))
+        msg.append("#{0}({1})".format(channel, mentions))
     bot.msg(trigger.nick, ' '.join(msg))
 
 @module.rule("(^.*channel.*$)|(^.*join.*$)|(^.*#.*$)")
