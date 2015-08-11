@@ -31,7 +31,7 @@ def list_channels(bot, trigger):
     msg = list()
     for channel, mentions in sorted(channels_dict.items(), key=operator.itemgetter(1), reverse=True):
         msg.append("#{0},{1}".format(channel, mentions))
-        bot.msg(trigger.nick, ' '.join(msg))
+    bot.msg(trigger.nick, ' '.join(msg))
 
 @module.rule("(^.*channel.*$)|(^.*join.*$)|(^.*#.*$)")
 def channel_mentioned(bot, trigger):
