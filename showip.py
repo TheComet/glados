@@ -2,11 +2,11 @@
 # https://github.com/TheComet93/showip
 
 from willie import module
-from subprocess import check_output
+import commands
 
 @module.commands('showip')
 def showip(bot, trigger):
     hostname = trigger.group(2)
-    ret = check_output(['showip', hostname])
+    ret = commands.getoutput(["/usr/bin/local/showip", hostname])
     bot.say(ret)
 
