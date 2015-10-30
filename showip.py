@@ -7,6 +7,6 @@ from subprocess import check_output
 @module.commands('showip')
 def showip(bot, trigger):
     hostname = trigger.group(2)
-    ret = check_output(["/usr/local/bin/showip ", hostname])
+    ret = check_output(["/usr/local/bin/showip", hostname])
     bot.say(ret)
 
