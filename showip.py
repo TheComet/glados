@@ -7,6 +7,6 @@ import commands
 @module.commands('showip')
 def showip(bot, trigger):
     hostname = trigger.group(2)
-    ret = commands.getoutput("/usr/bin/local/showip " + hostname)
+    ret = commands.getoutput("/usr/local/bin/showip " + hostname)
     bot.say(ret)
 
