@@ -36,7 +36,11 @@ def cut(bot, trigger):
         bot.reply('You must plant the bomb first with ".plant"')
         return
 
-    cutting = trigger.group(2).lower()
+    cutting = trigger.group(2)
+    if not cutting:
+        bot.reply("You need to cut a colour you idiot")
+        return
+    cutting = cutting.lower()
     if not cutting in colours:
         bot.reply("This bomb doesn't have any wires with the colour {}".format(cutting))
         return
